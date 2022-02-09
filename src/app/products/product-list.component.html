@@ -1,0 +1,52 @@
+<p *ngIf="false"> This is sample paragraph</p>
+<ul *ngFor="let num of [1,2,4,5,7]">
+  <li>{{num}}</li>
+</ul>
+<div class="card">
+  <div class="card-header">
+   {{productTitle}} Total Products {{filteredProducts.length}}
+   {{2-2}}
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Products</h5>
+    <div class="row">
+      <div class="col-md-2">
+        Filter by {{filterList}}
+      </div>
+      <div class="col-md-6">
+        <input type="text" [(ngModel)]="filterList" />
+        </div>
+    </div>
+    <div class="row">
+      <table class="table" *ngIf="filteredProducts.length > 0">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Price</th>
+            <th scope="col">Image</th>
+            <th scope="col">
+              <button class="btn btn-primary" (click)="toggleImage()" >
+               {{showImage ? 'Hide' : 'Show'}} Image
+              </button>
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of filteredProducts">
+            <th scope="row">{{p.id}}</th>
+            <td>{{p.name | lowercase }}</td>
+            <td>{{p.price | currency }}</td>
+            <td>
+              <img width="100"  src="{{p.imageUrl}}" />
+              </td>
+              <td>
+                <img [src]="p.imageUrl" *ngIf="showImage" [style.width.px]="imageWidth" />
+                </td>
+          </tr>
+
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
