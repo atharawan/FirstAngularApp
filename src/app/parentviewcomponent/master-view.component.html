@@ -1,0 +1,7 @@
+<div style="background: aliceblue; padding: 100px;;">
+<h4>This is Master View</h4>
+<p>{{outPutString}}</p>
+<input type="text" [(ngModel)]="outPutString" />
+
+<child-view [childInputString]="outPutString" (notify)="onNotifiedClicked($event)"></child-view>
+</div>

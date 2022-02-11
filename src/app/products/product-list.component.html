@@ -1,5 +1,8 @@
-<p *ngIf="false"> This is sample paragraph</p>
-<ul *ngFor="let num of [1,2,4,5,7]">
+<p *ngIf="false"> This is sample paragraph for ngIf</p>
+
+<p [hidden]="showImage"> This is sample paragraph for Hidden</p>
+
+<ul *ngFor="let num of [1,2,4,5,7]"  [ngClass]="getMyClass()">
   <li>{{num}}</li>
 </ul>
 <div class="card">
@@ -24,6 +27,8 @@
             <th scope="col">#</th>
             <th scope="col">Name</th>
             <th scope="col">Price</th>
+            <th scope="col">Qty</th>
+            <th scope="col">Date Added</th>
             <th scope="col">Image</th>
             <th scope="col">
               <button class="btn btn-primary" (click)="toggleImage()" >
@@ -33,10 +38,25 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let p of filteredProducts">
+          <tr *ngFor="let p of filteredProducts" [ngSwitch]="p.qty">
             <th scope="row">{{p.id}}</th>
-            <td>{{p.name | lowercase }}</td>
-            <td>{{p.price | currency }}</td>
+            <td [ngClass]="getMyClass()">{{p.name | removeSpace }}</td>
+            <td [ngStyle]="{'font-weight': p.qty == 0 ? 'bold':'normal'}">{{p.price | myCurrency : 'PKR' : '*' }}</td>
+            <td [ngClass]="{red: p.qty == 0}"  > <div *ngSwitchCase="1">
+              One
+            </div>
+            <div *ngSwitchCase="2">
+              Two
+            </div>
+            <div *ngSwitchCase="0">
+              Out of Stock
+            </div>
+            <div *ngSwitchDefault>
+              {{p.qty}}
+            </div></td>
+            <td>
+              {{p.dateAdded}}
+            </td>
             <td>
               <img width="100"  src="{{p.imageUrl}}" />
               </td>
