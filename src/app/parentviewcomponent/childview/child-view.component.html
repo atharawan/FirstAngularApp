@@ -3,7 +3,11 @@
 <p >This is child view</p>
 <p>Text from Masteer  <b>{{childInputString}}</b></p>
 
-<button class="btn-primary" (click)="onClick()">
-Click Me!
+<button class="btn-primary" (click)="onNotifyString()">
+Call  Me! (Call string)
 </button>
+
+<button class="btn-primary" (click)="onNotifyProduct()" style="margin-left: 20px;;">
+  Click Me! (call product)
+  </button>
 </div>

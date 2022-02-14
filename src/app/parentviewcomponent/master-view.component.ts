@@ -1,4 +1,5 @@
 import { Component } from "@angular/core";
+import { IProduct } from "../products/product";
 
 @Component(
   {
@@ -9,8 +10,18 @@ import { Component } from "@angular/core";
 export class MasterViewComponenet{
 
   outPutString : string = 'This is output string form Master';
-  onNotifiedClicked(inputstring: string)
+  outPutProduct : IProduct[] = [];
+  onNotifiedStringClicked(input: string)
   {
-      this.outPutString = inputstring;
+      this.outPutString = input;
   }
+
+
+
+  onNotifiedProductArray(input: IProduct[])
+  {
+      this.outPutProduct = input;
+  }
+
+
 }

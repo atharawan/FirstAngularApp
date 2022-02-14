@@ -10,6 +10,10 @@ import { RemoveSpacesPipe } from './shared/remove-spaces.pipe';
 import { DatePipe } from '@angular/common';
 import { MasterViewComponenet } from './parentviewcomponent/master-view.component';
 import { ChildViewComponenet } from './parentviewcomponent/childview/child-view.component';
+import { RouterModule } from '@angular/router';
+import { WelcomeComponent } from './welcome/welcome/welcome.component';
+import { ProductDetailComponent } from './products/product-detail/product-detail/product-detail.component';
+import { ProductGuard } from './products/product.guard';
 
 @NgModule({
   declarations: [
@@ -18,11 +22,23 @@ import { ChildViewComponenet } from './parentviewcomponent/childview/child-view.
     MyCurrencyPipe,
     RemoveSpacesPipe,
     MasterViewComponenet,
-    ChildViewComponenet
+    ChildViewComponenet,
+    WelcomeComponent,
+    ProductDetailComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot([
+      {path : 'products', component: ProductListComponent},
+      {path : 'products/:id', component: ProductDetailComponent, canActivate : [ProductGuard]},
+      {path: 'component', component: MasterViewComponenet},
+      {path: 'welcome', component: WelcomeComponent},
+      {path: 'user', loadChildren : () => import('./user/user.module')
+      .then(x=>x.UserModule) },
+      {path: '', redirectTo: 'welcome', pathMatch : 'full'},
+      {path: '**', redirectTo: 'welcome', pathMatch : 'full'}
+    ])
   ],
   providers: [DatePipe],
   bootstrap: [MyAppComponent]

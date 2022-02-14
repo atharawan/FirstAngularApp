@@ -2,6 +2,9 @@
 <h4>This is Master View</h4>
 <p>{{outPutString}}</p>
 <input type="text" [(ngModel)]="outPutString" />
+<ul *ngFor="let p of outPutProduct">
+  <li> {{p.name}}</li>
+</ul>
 
-<child-view [childInputString]="outPutString" (notify)="onNotifiedClicked($event)"></child-view>
+<child-view [childInputString]="outPutString" (notifyString)="onNotifiedStringClicked($event)" [childInputProduct]="outPutProduct" (notifyProducts)="onNotifiedProductArray($event)"  ></child-view>
 </div>

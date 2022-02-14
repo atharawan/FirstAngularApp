@@ -40,15 +40,20 @@
         <tbody>
           <tr *ngFor="let p of filteredProducts" [ngSwitch]="p.qty">
             <th scope="row">{{p.id}}</th>
-            <td [ngClass]="getMyClass()">{{p.name | removeSpace }}</td>
-            <td [ngStyle]="{'font-weight': p.qty == 0 ? 'bold':'normal'}">{{p.price | myCurrency : 'PKR' : '*' }}</td>
-            <td [ngClass]="{red: p.qty == 0}"  > <div *ngSwitchCase="1">
+            <td [ngClass]="getMyClass()">
+              <a [routerLink]="['/products', p.id]">
+              {{p.name | removeSpace | lowercase }}
+            </a>
+            </td>
+            <td [ngStyle]="{'font-weight': p.qty == 0 ? 'bold':'normal'}" >{{p.price | myCurrency : 'PKR' : '*' }}</td>
+            <td [ngClass]="{red: p.qty == 0}"  >
+            <div *ngSwitchCase="1">
               One
             </div>
             <div *ngSwitchCase="2">
               Two
             </div>
-            <div *ngSwitchCase="0">
+            <div *ngSwitchCase="0" >
               Out of Stock
             </div>
             <div *ngSwitchDefault>
