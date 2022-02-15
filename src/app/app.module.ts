@@ -14,6 +14,7 @@ import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome/welcome.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail/product-detail.component';
 import { ProductGuard } from './products/product.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { ProductGuard } from './products/product.guard';
   imports: [
     BrowserModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path : 'products', component: ProductListComponent},
       {path : 'products/:id', component: ProductDetailComponent, canActivate : [ProductGuard]},

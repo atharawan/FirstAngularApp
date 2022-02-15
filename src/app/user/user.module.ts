@@ -1,6 +1,7 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
+import { UserProfileComponent } from "./user-profile/user-profile.component";
 import { userRout } from "./user.routs";
 
 
@@ -11,7 +12,9 @@ import { userRout } from "./user.routs";
     RouterModule.forChild(userRout)
 
   ],
-  declarations: [],
+  declarations: [
+    UserProfileComponent
+  ],
   providers: []
 
 })

@@ -1,1 +1,7 @@
 <h2>user-profile works!</h2>
+
+<ul *ngFor="let u of userList$ | async">
+  <li><b>ID</b> {{u.id}} {{u.name}} <a>{{u.website}}</a> <b> City:</b> {{u.address | json }}</li>
+</ul>
+
+<h5 class="error" *ngIf="err">{{err}}</h5>
