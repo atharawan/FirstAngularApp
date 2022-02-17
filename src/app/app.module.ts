@@ -15,6 +15,7 @@ import { WelcomeComponent } from './welcome/welcome/welcome.component';
 import { ProductDetailComponent } from './products/product-detail/product-detail/product-detail.component';
 import { ProductGuard } from './products/product.guard';
 import { HttpClientModule } from '@angular/common/http';
+import { HightLightDirective } from './shared/highlight.directive';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     MasterViewComponenet,
     ChildViewComponenet,
     WelcomeComponent,
-    ProductDetailComponent
+    ProductDetailComponent,
+    HightLightDirective
   ],
   imports: [
     BrowserModule,
