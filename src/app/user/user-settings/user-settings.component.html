@@ -3,7 +3,7 @@
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Your name</label>
       <input type="text" class="form-control" id="exampleInputEmail1" #email #emailProperty="ngModel"
-      aria-describedby="emailHelp" required name="email"  [(ngModel)]="userSettingsForm!.email"
+      aria-describedby="emailHelp"  required name="email"  [(ngModel)]="userSettingsForm!.email"
        >
       <div class="alert alert-danger" [hidden]="!(emailProperty.touched && emailProperty.invalid)" >
         Ente a name
@@ -22,7 +22,7 @@
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword1" class="form-label">Phone</label>
-      <input type="text" class="form-control" id="exampleInputPassword1" name="phone"  [(ngModel)]="userSettingsForm.phone">
+      <input type="number" class="form-control" id="exampleInputPassword1" name="phone"  [(ngModel)]="userSettingsForm.phone">
     </div>
 
 
